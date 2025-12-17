@@ -51,7 +51,7 @@ const Navbar = () => {
           <img
             src="https://regentarewards.com/images/logo.svg"
             alt="Regenta Rewards"
-            className="h-[44px]"
+            className="h-[80px]"
           />
 
           {/* MENU */}
