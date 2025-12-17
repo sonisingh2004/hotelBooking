@@ -1,30 +1,26 @@
-import React from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import "./index.css"
-import HeroCarousel from "./components/HeroCarousel"
-import Rooms from "./components/Rooms"
-import Amenities from "./components/Amenities"
-import Gallery from "./components/Gallery"
-import GalleryWithCategories from "./components/GalleryWithCategories"
-import HotelGallery from "./components/HotelGallery"
-import Location from "./components/Location"
-import Footer from "./components/Footer"
+import WhatsAppFloat from "./components/WhatsAppFloat"
+
+import Home from "./pages/Home"
+import HotelDetails from "./pages/HotelDetails"
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Navbar />
-      {/* <Hero /> */}
-      <HeroCarousel/>
-      <Rooms/>
-      <Amenities/>
-      {/* <Gallery/> */}
-      {/* <GalleryWithCategories/> */}
-      <HotelGallery/>
-      <Location/>
-      <Footer/>
-    </div>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/hotel/regenta-central-puri"
+          element={<HotelDetails />}
+        />
+      </Routes>
+
+      <WhatsAppFloat />
+    </BrowserRouter>
   )
 }
 
