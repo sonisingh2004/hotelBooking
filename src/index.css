@@ -1,1 +1,19 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+}
+:root {
+  --brand: #6a1b9a;
+  --brand-dark: #5a1682;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+
+  --nav-h: 80px;
+  --nav-h-small: 72px;
+  --top-h: 28px;
+
+  --radius-pill: 999px;
+  --radius-md: 12px;
+}
