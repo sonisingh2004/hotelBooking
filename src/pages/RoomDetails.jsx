@@ -10,9 +10,6 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 const roomsData = {
-  /* =========================
-     DELUXE DOUBLE
-  ========================== */
   "deluxe-double-balcony": {
     name: "Deluxe Double with Balcony",
     subtitle: "Partial Sea View",
@@ -47,9 +44,7 @@ const roomsData = {
     ],
   },
 
-  /* =========================
-     DELUXE TWIN
-  ========================== */
+
   "deluxe-twin-balcony": {
     name: "Deluxe Twin with Balcony",
     subtitle: "Partial Sea View",

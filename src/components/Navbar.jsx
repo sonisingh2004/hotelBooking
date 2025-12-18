@@ -1,16 +1,17 @@
 // @ts-nocheck
-import { Menu } from "@headlessui/react"
-import { AnimatePresence, motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { Menu } from "@headlessui/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
@@ -20,7 +21,6 @@ const Navbar = () => {
         ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-white"}
       `}
     >
-      {/* TOP BAR */}
       <div className="border-b border-gray-200">
         <div
           className="
@@ -38,7 +38,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MAIN BAR */}
       <div className="border-b border-gray-200">
         <div
           className={`
@@ -48,32 +47,46 @@ const Navbar = () => {
             ${scrolled ? "h-[var(--nav-h-small)]" : "h-[var(--nav-h)]"}
           `}
         >
-          {/* LOGO */}
           <img
             src="https://regentarewards.com/images/logo.svg"
             alt="Regenta Rewards"
             className="h-[80px]"
           />
 
-          {/* MENU */}
           <nav className="hidden lg:flex justify-center gap-10 text-[14.5px] font-medium text-[var(--text-main)]">
-            {["Destinations", "Offers"].map((item) => (
-              <span
-                key={item}
-                className="
-                  relative cursor-pointer transition
-                  hover:text-[var(--brand)]
-                  after:absolute after:left-0 after:-bottom-1
-                  after:h-[2px] after:w-0 after:bg-[var(--brand)]
-                  after:transition-all after:duration-300
-                  hover:after:w-full
-                "
-              >
-                {item}
-              </span>
-            ))}
+            {["Destinations", "Offers"].map((item) =>
+              item === "Offers" ? (
+                <Link
+                  key={item}
+                  to="/offers"
+                  className="
+                    relative cursor-pointer transition
+                    hover:text-[var(--brand)]
+                    after:absolute after:left-0 after:-bottom-1
+                    after:h-[2px] after:w-0 after:bg-[var(--brand)]
+                    after:transition-all after:duration-300
+                    hover:after:w-full
+                  "
+                >
+                  {item}
+                </Link>
+              ) : (
+                <span
+                  key={item}
+                  className="
+                    relative cursor-pointer transition
+                    hover:text-[var(--brand)]
+                    after:absolute after:left-0 after:-bottom-1
+                    after:h-[2px] after:w-0 after:bg-[var(--brand)]
+                    after:transition-all after:duration-300
+                    hover:after:w-full
+                  "
+                >
+                  {item}
+                </span>
+              )
+            )}
 
-            {/* DROPDOWN */}
             <Menu as="div" className="relative">
               {({ open }) => (
                 <>
@@ -149,7 +162,7 @@ const Navbar = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
