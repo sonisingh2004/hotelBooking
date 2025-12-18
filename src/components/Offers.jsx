@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Heart, Sparkles, ArrowRight } from 'lucide-react';
+// @ts-nocheck
+import { ArrowRight, Heart, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ExclusiveOffersPage() {
   const [favorites, setFavorites] = useState({});
