@@ -1,11 +1,13 @@
 // @ts-nocheck
-import { Menu } from "@headlessui/react"
+import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [openMore, setOpenMore] = useState(false)
+  const [openMembership, setOpenMembership] = useState(false)
+  const navRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -13,77 +15,61 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  useEffect(() => {
+    const close = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setOpenMore(false)
+        setOpenMembership(false)
+      }
+    }
+    window.addEventListener("click", close)
+    return () => window.removeEventListener("click", close)
+  }, [])
+
   return (
     <header
-      className={`
-        fixed top-0 w-full z-50
-        transition-all duration-300
-        ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-white"}
-      `}
+      ref={navRef}
+      className={`fixed top-0 w-full z-50 ${
+        scrolled ? "bg-white/90 backdrop-blur shadow-sm" : "bg-white"
+      }`}
     >
       {/* TOP BAR */}
-      <div className="border-b border-gray-200">
-        <div
-          className="
-            max-w-[1440px] mx-auto px-10
-            h-[var(--top-h)]
-            flex justify-end items-center gap-6
-            text-[12px] text-[var(--text-muted)]
-          "
-        >
-          <span className="hover:text-black cursor-pointer">My Booking</span>
-          <span className="hover:text-black cursor-pointer">Help Center</span>
-          <span className="flex items-center gap-1 text-[var(--brand)] font-medium">
+      <div className="border-b">
+        <div className="max-w-[1440px] mx-auto px-10 h-[28px] flex justify-end gap-6 text-xs text-gray-500 items-center">
+          <span>My Booking</span>
+          <span>Help Center</span>
+          <span className="text-purple-600 font-medium">
             +91 9902029174
           </span>
         </div>
       </div>
 
       {/* MAIN BAR */}
-      <div className="border-b border-gray-200">
-        <div
-          className={`
-            max-w-[1440px] mx-auto px-10
-            grid grid-cols-[300px_1fr_300px]
-            items-center transition-all duration-300
-            ${scrolled ? "h-[var(--nav-h-small)]" : "h-[var(--nav-h)]"}
-          `}
-        >
-          {/* LOGO */}
+      <div className="border-b">
+        <div className="max-w-[1440px] mx-auto px-10 h-[80px] grid grid-cols-[300px_1fr_300px] items-center">
           <img
             src="https://regentarewards.com/images/logo.svg"
             alt="Regenta Rewards"
-            className="h-[80px]"
+            className="h-[72px]"
           />
 
           {/* MENU */}
           <nav className="hidden lg:flex justify-center gap-10 text-[14.5px] font-medium text-[var(--text-main)]">
-            <Link
-              to="/destinations"
-              className="
-                relative cursor-pointer transition
-                hover:text-[var(--brand)]
-                after:absolute after:left-0 after:-bottom-1
-                after:h-[2px] after:w-0 after:bg-[var(--brand)]
-                after:transition-all after:duration-300
-                hover:after:w-full
-              "
-            >
-              Destinations
-            </Link>
-            
-            <span
-              className="
-                relative cursor-pointer transition
-                hover:text-[var(--brand)]
-                after:absolute after:left-0 after:-bottom-1
-                after:h-[2px] after:w-0 after:bg-[var(--brand)]
-                after:transition-all after:duration-300
-                hover:after:w-full
-              "
-            >
-              Offers
-            </span>
+            {["Destinations", "Offers"].map((item) => (
+              <span
+                key={item}
+                className="
+                  relative cursor-pointer transition
+                  hover:text-[var(--brand)]
+                  after:absolute after:left-0 after:-bottom-1
+                  after:h-[2px] after:w-0 after:bg-[var(--brand)]
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
+              >
+                {item}
+              </span>
+            ))}
 
             {/* DROPDOWN */}
             <Menu as="div" className="relative">
@@ -146,20 +132,27 @@ const Navbar = () => {
             </span>
 
             <button
-              className="
-                h-[38px] px-6
-                bg-[var(--brand)] text-white
-                rounded-[var(--radius-pill)]
-                text-[14px] font-medium
-                hover:bg-[var(--brand-dark)]
-                transition
-              "
+              onClick={(e) => {
+                e.stopPropagation()
+                setOpenMore((p) => !p)
+                setOpenMembership(false)
+              }}
             >
+              More ▾
+            </button>
+          </nav>
+
+          <div className="hidden lg:flex justify-end gap-6 items-center">
+            <span>EN</span>
+            <button className="bg-purple-700 text-white px-6 py-2 rounded-full">
               Sign In / Sign Up
             </button>
           </div>
         </div>
       </div>
+
+      <MembershipMegaMenu open={openMembership} />
+      <MoreMegaMenu open={openMore} />
     </header>
   )
 }
