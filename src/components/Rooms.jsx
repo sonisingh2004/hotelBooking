@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { motion } from "framer-motion"
 import { Bath, BedDouble, MoveRight, Users } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
@@ -130,20 +131,35 @@ const Rooms = () => {
     <section className="max-w-[1440px] mx-auto px-6 md:px-16 mt-[140px]">
       
       {/* HEADING */}
-      <div className="text-center mb-14">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mb-14"
+      >
         <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
           Our Rooms
         </h2>
         <p className="mt-3 text-gray-500 max-w-xl mx-auto">
           Designed to offer comfort, elegance and a relaxing stay experience.
         </p>
-      </div>
+      </motion.div>
 
       {/* ROOM GRID */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {rooms.map((room, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 0.6, 
+              delay: index * 0.15,
+              ease: "easeOut"
+            }}
+            viewport={{ once: true }}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
             className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition"
           >
             {/* CAROUSEL */}
@@ -191,7 +207,7 @@ const Rooms = () => {
                 Discover More <MoveRight size={18} />
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

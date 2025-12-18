@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { motion } from "framer-motion"
 import { ArrowRight, Hotel, MapPin, Search, Star, Users, UtensilsCrossed } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -265,16 +266,38 @@ const Destinations = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Explore Destinations</h1>
-          <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 text-center text-white px-6"
+        >
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-6xl font-bold mb-4"
+          >
+            Explore Destinations
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl font-light max-w-2xl mx-auto"
+          >
             Discover amazing places across India with Regenta Rewards
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Tabs Section */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-16 -mt-8 relative z-20">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="max-w-[1440px] mx-auto px-6 md:px-16 -mt-8 relative z-20"
+      >
         <div className="bg-white rounded-t-2xl shadow-xl">
           <div className="flex border-b">
             {tabs.map((tab) => {
@@ -331,21 +354,36 @@ const Destinations = () => {
             </select>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Destinations Grid */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-16 py-16">
-        <div className="mb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-8"
+        >
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             {filteredDestinations.length} Destination{filteredDestinations.length !== 1 ? 's' : ''} Found
           </h2>
           <p className="text-gray-600">Choose from our curated collection of premium properties</p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredDestinations.map((destination) => (
-            <div
+          {filteredDestinations.map((destination, index) => (
+            <motion.div
               key={destination.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
             >
               {/* Image */}
@@ -428,7 +466,7 @@ const Destinations = () => {
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -442,17 +480,27 @@ const Destinations = () => {
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-[#6a1b9a] to-[#8e24aa] py-16">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-16 text-center text-white">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-[1440px] mx-auto px-6 md:px-16 text-center text-white"
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Can't Find Your Destination?
           </h2>
           <p className="text-xl mb-8 opacity-90">
             Contact our team to discover more properties across India
           </p>
-          <button className="bg-white text-[#6a1b9a] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition">
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-[#6a1b9a] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition"
+          >
             Contact Us
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </section>
     </div>
   )

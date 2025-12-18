@@ -1,9 +1,8 @@
-import React from "react"
-import { MapPin, Landmark, Train, Plane } from "lucide-react"
+import { Landmark, MapPin, Plane, Train } from "lucide-react"
 
 const Location = () => {
   return (
-    <section className="max-w-[1440px] mx-auto px-6 md:px-16 mt-[120px]">
+    <section className="max-w-[1440px] mx-auto px-6 py-8 md:px-16 mt-[120px] bg-[#FDF3FA]">
       
       {/* HEADING */}
       <div className="text-center mb-12">
