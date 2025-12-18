@@ -2,6 +2,7 @@
 import { Menu } from "@headlessui/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -57,21 +58,32 @@ const Navbar = () => {
 
           {/* MENU */}
           <nav className="hidden lg:flex justify-center gap-10 text-[14.5px] font-medium text-[var(--text-main)]">
-            {["Destinations", "Offers"].map((item) => (
-              <span
-                key={item}
-                className="
-                  relative cursor-pointer transition
-                  hover:text-[var(--brand)]
-                  after:absolute after:left-0 after:-bottom-1
-                  after:h-[2px] after:w-0 after:bg-[var(--brand)]
-                  after:transition-all after:duration-300
-                  hover:after:w-full
-                "
-              >
-                {item}
-              </span>
-            ))}
+            <Link
+              to="/destinations"
+              className="
+                relative cursor-pointer transition
+                hover:text-[var(--brand)]
+                after:absolute after:left-0 after:-bottom-1
+                after:h-[2px] after:w-0 after:bg-[var(--brand)]
+                after:transition-all after:duration-300
+                hover:after:w-full
+              "
+            >
+              Destinations
+            </Link>
+            
+            <span
+              className="
+                relative cursor-pointer transition
+                hover:text-[var(--brand)]
+                after:absolute after:left-0 after:-bottom-1
+                after:h-[2px] after:w-0 after:bg-[var(--brand)]
+                after:transition-all after:duration-300
+                hover:after:w-full
+              "
+            >
+              Offers
+            </span>
 
             {/* DROPDOWN */}
             <Menu as="div" className="relative">

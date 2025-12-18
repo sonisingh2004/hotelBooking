@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import WhatsAppFloat from "./components/WhatsAppFloat"
 
+import Destinations from "./pages/Destinations"
 import Home from "./pages/Home"
 import HotelDetails from "./pages/HotelDetails"
 import RoomDetails from "./pages/RoomDetails"
@@ -14,6 +15,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/destinations" element={<Destinations />} />
         <Route
           path="/hotel/regenta-central-puri"
           element={<HotelDetails />}
