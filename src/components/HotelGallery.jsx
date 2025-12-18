@@ -9,15 +9,20 @@ const galleryData = {
   ],
   Dine: [
     "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/kqfwmrusgsrinxboduis",
-    "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/uwbgls4htdwuoacg2pvl"
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/uwbgls4htdwuoacg2pvl",
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/c_fill,h_730,w_1380/v1/hotel/is5xixxe6bumpe0jrys2?_a=BAMAEuUo0",
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/c_fill,h_730,w_1380/v1/hotel/xfnjowo3e4q0vfebohwh?_a=BAMAEuUo0"
   ],
   Facilities: [
     "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/tmgiyugzqtbiipozjh5e",
-    "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/aj6vod9e8kzbdxttgyij"
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/aj6vod9e8kzbdxttgyij",
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/c_fill,h_730,w_1380/v1/hotel/ccbgd9s5gzffbtw6sgdq?_a=BAMAEuUo0"
   ],
   "In & Around": [
     "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/uwbgls4htdwuoacg2pvl",
-    "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/kqfwmrusgsrinxboduis"
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/v1/hotel/kqfwmrusgsrinxboduis",
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/c_fill,h_730,w_1380/v1/hotel/cbygiksiwdyert4xikag?_a=BAMAEuUo0",
+    "https://res.cloudinary.com/dr6ka6jsd/image/upload/c_fill,h_730,w_1380/v1/hotel/mkemnr5atlitrvvxhjb2?_a=BAMAEuUo0"
   ]
 }
 
