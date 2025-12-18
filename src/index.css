@@ -1,9 +1,11 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
 
 body {
   font-family: "Inter", system-ui, sans-serif;
 }
+
 :root {
   --brand: #6a1b9a;
   --brand-dark: #5a1682;

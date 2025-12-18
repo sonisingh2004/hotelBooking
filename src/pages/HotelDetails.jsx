@@ -1,24 +1,26 @@
-import React from "react"
+import { useState } from "react"
 
 // HERO & NAV
-import HeroCarousel from "../components/HeroCarousel"
 import BookingBar from "../components/BookingBar"
+import HeroCarousel from "../components/HeroCarousel"
 import HotelSubNav from "../components/HotelSubNav"
 
 // SECTIONS
+import Attractions from "../components/Attractions"
+import Banquets from "../components/Banquets"
+import Dining from "../components/Dining"
+import HotelGallery from "../components/HotelGallery"
+import Location from "../components/Location"
+import Offers from "../components/Offers"
 import Overview from "../components/Overview"
 import Rooms from "../components/Rooms"
-import Dining from "../components/Dining"
-import Banquets from "../components/Banquets"
-import HotelGallery from "../components/HotelGallery"
-import Offers from "../components/Offers"
-import Attractions from "../components/Attractions"
-import Location from "../components/Location"
 
 // FOOTER
 import Footer from "../components/Footer"
 
 const HotelDetails = () => {
+  const [activeSection, setActiveSection] = useState("overview")
+
   return (
     <>
       {/* HERO SECTION */}
@@ -26,42 +28,52 @@ const HotelDetails = () => {
       <BookingBar />
 
       {/* STICKY SUB NAV */}
-      <HotelSubNav />
+      <HotelSubNav activeSection={activeSection} setActiveSection={setActiveSection} />
 
-      {/* OVERVIEW */}
-      <section id="overview">
-        <Overview />
-      </section>
+      {/* CONTENT CONTAINER */}
+      <div className="min-h-screen">
+        {activeSection === "overview" && (
+          <section id="overview">
+            <Overview />
+          </section>
+        )}
 
-      {/* ROOMS */}
-      <section id="rooms">
-        <Rooms />
-      </section>
+        {activeSection === "rooms" && (
+          <section id="rooms">
+            <Rooms />
+          </section>
+        )}
 
-      {/* DINING */}
-      <section id="dining">
-        <Dining />
-      </section>
+        {activeSection === "dining" && (
+          <section id="dining">
+            <Dining />
+          </section>
+        )}
 
-      {/* BANQUETS */}
-      <section id="banquets">
-        <Banquets />
-      </section>
+        {activeSection === "banquets" && (
+          <section id="banquets">
+            <Banquets />
+          </section>
+        )}
 
-      {/* GALLERY */}
-      <section id="gallery">
-        <HotelGallery />
-      </section>
+        {activeSection === "gallery" && (
+          <section id="gallery">
+            <HotelGallery />
+          </section>
+        )}
 
-      {/* OFFERS */}
-      <section id="offers">
-        <Offers />
-      </section>
+        {activeSection === "offers" && (
+          <section id="offers">
+            <Offers />
+          </section>
+        )}
 
-      {/* ATTRACTIONS */}
-      <section id="attractions">
-        <Attractions />
-      </section>
+        {activeSection === "attractions" && (
+          <section id="attractions">
+            <Attractions />
+          </section>
+        )}
+      </div>
 
       {/* LOCATION MAP */}
       <Location />

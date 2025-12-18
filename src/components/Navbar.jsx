@@ -1,6 +1,7 @@
-import react,{ useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+// @ts-nocheck
 import { Menu } from "@headlessui/react"
+import { AnimatePresence, motion } from "framer-motion"
+import { useEffect, useState } from "react"
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)

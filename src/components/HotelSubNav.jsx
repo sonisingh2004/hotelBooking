@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+// @ts-nocheck
 
 const sections = [
   { id: "overview", label: "Overview" },
@@ -10,32 +10,7 @@ const sections = [
   { id: "attractions", label: "Attractions" }
 ]
 
-const HotelSubNav = () => {
-  const [active, setActive] = useState("overview")
-
-  useEffect(() => {
-    const onScroll = () => {
-      sections.forEach((sec) => {
-        const el = document.getElementById(sec.id)
-        if (!el) return
-
-        const rect = el.getBoundingClientRect()
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          setActive(sec.id)
-        }
-      })
-    }
-
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth"
-    })
-  }
-
+const HotelSubNav = ({ activeSection, setActiveSection }) => {
   return (
     <div className="sticky top-[108px] z-40 bg-white border-b">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -43,15 +18,15 @@ const HotelSubNav = () => {
           {sections.map((sec) => (
             <button
               key={sec.id}
-              onClick={() => scrollTo(sec.id)}
+              onClick={() => setActiveSection(sec.id)}
               className={`py-4 whitespace-nowrap relative ${
-                active === sec.id
+                activeSection === sec.id
                   ? "text-[#6a1b9a]"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
               {sec.label}
-              {active === sec.id && (
+              {activeSection === sec.id && (
                 <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-[#6a1b9a]" />
               )}
             </button>
