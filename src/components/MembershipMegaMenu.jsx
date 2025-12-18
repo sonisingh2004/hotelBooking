@@ -1,4 +1,4 @@
-import React from "react"
+// @ts-nocheck
 
 const MembershipMegaMenu = ({ open }) => {
   if (!open) return null

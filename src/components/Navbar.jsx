@@ -1,7 +1,8 @@
 // @ts-nocheck
-import React, { useEffect, useRef, useState } from "react"
+import { Menu } from "@headlessui/react"
 import { AnimatePresence, motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -137,22 +138,17 @@ const Navbar = () => {
                 setOpenMore((p) => !p)
                 setOpenMembership(false)
               }}
+              className="hover:text-[var(--brand)] transition"
             >
               More ▾
             </button>
-          </nav>
 
-          <div className="hidden lg:flex justify-end gap-6 items-center">
-            <span>EN</span>
             <button className="bg-purple-700 text-white px-6 py-2 rounded-full">
               Sign In / Sign Up
             </button>
           </div>
         </div>
       </div>
-
-      <MembershipMegaMenu open={openMembership} />
-      <MoreMegaMenu open={openMore} />
     </header>
   )
 }
