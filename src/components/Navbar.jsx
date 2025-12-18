@@ -1,8 +1,8 @@
 // @ts-nocheck
-import react,{ useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
-/* ---------- MORE MEGA MENU ---------- */
+/* ---------------- MORE MEGA MENU ---------------- */
 const MoreMegaMenu = ({ open }) => {
   const images = [
     "https://images.unsplash.com/photo-1526779259212-939e64788e3c",
@@ -13,145 +13,152 @@ const MoreMegaMenu = ({ open }) => {
 
   useEffect(() => {
     if (!open) return
-    const t = setInterval(
+    const timer = setInterval(
       () => setIndex((i) => (i + 1) % images.length),
       3000
     )
-    return () => clearInterval(t)
+    return () => clearInterval(timer)
   }, [open])
 
-  if (!open) return null
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.25 }}
-      className="fixed left-0 top-[108px] w-full bg-white border-t shadow-xl z-40"
-    >
-      <div className="max-w-[1400px] mx-auto px-10 py-10 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
-        {/* LEFT */}
-        <div>
-          <h3 className="text-xl font-semibold mb-2">
-            Stay, Earn, and Experience More
-          </h3>
-          <p className="text-sm text-gray-600 mb-8 max-w-2xl">
-            Discover the joy of rewards with every stay — exclusive discounts,
-            complimentary upgrades, and memorable experiences await.
-          </p>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 12 }}
+          transition={{ duration: 0.25 }}
+          className="fixed left-0 top-[108px] w-full bg-white border-t shadow-xl z-40"
+        >
+          <div className="max-w-[1400px] mx-auto px-10 py-10 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-            {[
-              "Meetings & Conferences",
-              "Destination Weddings",
-              "Social Events",
-              "Dining & Drinking"
-            ].map((t) => (
-              <div key={t}>
-                <h4 className="font-medium">{t}</h4>
-                <p className="text-gray-600 mt-1">
-                  Learn more about our curated experiences.
+            {/* LEFT */}
+            <div>
+              <h3 className="text-xl font-semibold mb-2">
+                Stay, Earn, and Experience More
+              </h3>
+              <p className="text-sm text-gray-600 mb-8 max-w-2xl">
+                Discover the joy of rewards with every stay — exclusive discounts,
+                complimentary upgrades, and memorable experiences await.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                {[
+                  "Meetings & Conferences",
+                  "Destination Weddings",
+                  "Social Events",
+                  "Dining & Drinking"
+                ].map((item) => (
+                  <div key={item}>
+                    <h4 className="font-medium">{item}</h4>
+                    <p className="text-gray-600 mt-1">
+                      Learn more about our curated experiences.
+                    </p>
+                    <span className="text-pink-600 font-medium">
+                      Know more →
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT SLIDER */}
+            <div className="relative bg-sky-200 rounded-2xl overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={index}
+                  src={images[index]}
+                  alt="Rewards"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
+
+              <div className="relative z-10 p-6 text-white">
+                <h4 className="text-lg font-semibold">
+                  Your Adventure, Our Rewards
+                </h4>
+                <p className="text-sm mt-2">
+                  Save more while travelling smarter.
                 </p>
-                <span className="text-pink-600 font-medium">
-                  Know more →
-                </span>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* RIGHT SLIDER */}
-        <div className="relative bg-sky-200 rounded-2xl overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={index}
-              src={images[index]}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6 }}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </AnimatePresence>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`w-2 h-2 rounded-full ${
+                      i === index ? "bg-white" : "bg-white/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
 
-          <div className="relative z-10 p-6 text-white">
-            <h4 className="text-lg font-semibold">
-              Your Adventure, Our Rewards
-            </h4>
-            <p className="text-sm mt-2">
-              Save more while travelling smarter.
-            </p>
           </div>
-
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-            {images.map((_, i) => (
-              <span
-                key={i}
-                className={`w-2 h-2 rounded-full ${
-                  i === index ? "bg-white" : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 
-/* ---------- MEMBERSHIP MEGA MENU ---------- */
-const MembershipMegaMenu = ({ open }) => {
-  if (!open) return null
+/* ---------------- MEMBERSHIP MEGA MENU ---------------- */
+const MembershipMegaMenu = ({ open }) => (
+  <AnimatePresence>
+    {open && (
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 12 }}
+        transition={{ duration: 0.25 }}
+        className="fixed left-0 top-[108px] w-full bg-white border-t shadow-xl z-40"
+      >
+        <div className="max-w-[1400px] mx-auto px-10 py-10 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.25 }}
-      className="fixed left-0 top-[108px] w-full bg-white border-t shadow-xl z-40"
-    >
-      <div className="max-w-[1400px] mx-auto px-10 py-10 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
-        <div>
-          <h3 className="text-xl font-semibold mb-2">
-            Unlock Exclusive Perks Every Time You Travel
-          </h3>
-          <p className="text-sm text-gray-600 mb-6 max-w-2xl">
-            Earn rewards, upgrades and privileges across Regenta hotels.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {["Rewards Overview", "Membership Benefits"].map((t) => (
-              <div
-                key={t}
-                className="border rounded-xl p-5 hover:shadow-md transition"
-              >
-                <h4 className="font-medium">{t}</h4>
-                <span className="text-pink-600 font-medium mt-2 inline-block">
-                  Know more →
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-pink-100 rounded-2xl p-6 flex items-center">
           <div>
-            <h4 className="text-lg font-semibold">
-              Stay Connected, Stay Rewarded
-            </h4>
-            <p className="text-sm mt-2">
-              Join Regenta Rewards and travel smarter.
+            <h3 className="text-xl font-semibold mb-2">
+              Unlock Exclusive Perks Every Time You Travel
+            </h3>
+            <p className="text-sm text-gray-600 mb-6 max-w-2xl">
+              Earn rewards, upgrades and privileges across Regenta hotels.
             </p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
 
-/* ---------- NAVBAR ---------- */
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {["Rewards Overview", "Membership Benefits"].map((item) => (
+                <div
+                  key={item}
+                  className="border rounded-xl p-5 hover:shadow-md transition"
+                >
+                  <h4 className="font-medium">{item}</h4>
+                  <span className="text-pink-600 font-medium mt-2 inline-block">
+                    Know more →
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-pink-100 rounded-2xl p-6 flex items-center">
+            <div>
+              <h4 className="text-lg font-semibold">
+                Stay Connected, Stay Rewarded
+              </h4>
+              <p className="text-sm mt-2">
+                Join Regenta Rewards and travel smarter.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+)
+
+/* ---------------- NAVBAR ---------------- */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [openMore, setOpenMore] = useState(false)
@@ -184,7 +191,7 @@ const Navbar = () => {
     >
       {/* TOP BAR */}
       <div className="border-b">
-        <div className="max-w-[1440px] mx-auto px-10 h-[28px] flex justify-end items-center gap-6 text-xs text-gray-500">
+        <div className="max-w-[1440px] mx-auto px-10 h-[28px] flex justify-end gap-6 text-xs text-gray-500 items-center">
           <span>My Booking</span>
           <span>Help Center</span>
           <span className="text-purple-600 font-medium">
@@ -198,6 +205,7 @@ const Navbar = () => {
         <div className="max-w-[1440px] mx-auto px-10 h-[80px] grid grid-cols-[300px_1fr_300px] items-center">
           <img
             src="https://regentarewards.com/images/logo.svg"
+            alt="Regenta Rewards"
             className="h-[72px]"
           />
 
@@ -208,7 +216,7 @@ const Navbar = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation()
-                setOpenMembership(!openMembership)
+                setOpenMembership((p) => !p)
                 setOpenMore(false)
               }}
             >
@@ -218,7 +226,7 @@ const Navbar = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation()
-                setOpenMore(!openMore)
+                setOpenMore((p) => !p)
                 setOpenMembership(false)
               }}
             >
@@ -235,10 +243,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <AnimatePresence>
-        {openMembership && <MembershipMegaMenu open />}
-        {openMore && <MoreMegaMenu open />}
-      </AnimatePresence>
+      <MembershipMegaMenu open={openMembership} />
+      <MoreMegaMenu open={openMore} />
     </header>
   )
 }
