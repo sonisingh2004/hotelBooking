@@ -27,8 +27,8 @@ const App = () => {
           element={<RoomDetails />}
         />
       </Routes>
-
       <WhatsAppFloat />
+
     </BrowserRouter>
   )
 }
