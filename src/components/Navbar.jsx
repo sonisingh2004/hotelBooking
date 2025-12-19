@@ -211,12 +211,12 @@ const Navbar = () => {
       <div className="border-b">
         <div className="max-w-[1440px] mx-auto px-10 h-[80px] grid grid-cols-[300px_1fr_300px] items-center">
 
-          <img
+          <Link to="/"><img
             src="https://regentarewards.com/images/logo.svg"
             alt="Regenta Rewards"
             className="h-[72px]"
           />
-
+</Link>
           <nav className="hidden lg:flex justify-center gap-10 text-sm font-medium">
             <Link to="/destinations">Destinations</Link>
             <Link to="/offers">Offers</Link>

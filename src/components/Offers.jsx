@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { ArrowRight, Heart, Sparkles } from 'lucide-react';
 import { useState } from 'react';
+import ExclusiveHeroCarousel from './ExclusiveHeroCarousel';
 
 export default function ExclusiveOffersPage() {
   const [favorites, setFavorites] = useState({});
@@ -34,29 +35,9 @@ export default function ExclusiveOffersPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Header with animated background */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-purple-900 via-purple-800 to-purple-900 py-16 md:py-20">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Sparkles className="w-6 h-6 text-purple-200 animate-bounce" />
-              <span className="text-purple-200 text-sm font-semibold tracking-widest">SPECIAL COLLECTION</span>
-              <Sparkles className="w-6 h-6 text-purple-200 animate-bounce" style={{ animationDelay: '0.3s' }} />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-              Exclusive Offers
-            </h1>
-            <p className="text-purple-100 max-w-2xl mx-auto text-lg">
-              Discover our latest deals and special packages across all our premium properties
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* HEADER WITH BACKGROUND IMAGE */}
+<ExclusiveHeroCarousel/>
+
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
@@ -156,67 +137,7 @@ export default function ExclusiveOffersPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white mt-20 pt-16 pb-8">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-10">
-            {/* Column 1 */}
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-purple-300">Quick Links</h3>
-              <ul className="space-y-2.5 text-gray-300 text-sm">
-                {['Our Hotels', 'Dining', 'Meetings & Events', 'Weddings', 'Corporate', 'Blog'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="hover:text-purple-400 transition-colors duration-200">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 2 */}
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-purple-300">Rewards & More</h3>
-              <ul className="space-y-2.5 text-gray-300 text-sm">
-                {['Regenta Rewards', 'Destinations', 'Membership Benefits', 'Get in Touch', 'Work with Us'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="hover:text-purple-400 transition-colors duration-200">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 3 */}
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-purple-300">Connect with Us</h3>
-              <div className="flex gap-3 mb-6">
-                {['f', 'in', 't'].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="bg-purple-600 hover:bg-purple-500 p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
-                  >
-                    <span className="text-sm font-bold">{social}</span>
-                  </a>
-                ))}
-              </div>
-              <p className="text-gray-300 text-sm">
-                Have questions? <br />
-                <span className="font-semibold text-purple-300">+91 98765 43210</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="pt-8 border-t border-gray-700 text-center">
-            <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Regenta Hotels. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }

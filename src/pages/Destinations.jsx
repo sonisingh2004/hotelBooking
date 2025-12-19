@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, Hotel, MapPin, Search, Star, Users, UtensilsCrossed } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Footer from "../components/Footer"
 
 const hotelsData = [
   {
@@ -501,7 +502,9 @@ const Destinations = () => {
             Contact Us
           </motion.button>
         </motion.div>
+        
       </section>
+      <Footer/>
     </div>
   )
 }

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion"
 import { Award, Camera, Download, Image as ImageIcon, MapPin, Share2, Sparkles, X } from "lucide-react"
 import { useState } from "react"
+import Footer from "./Footer"
 
 const galleryCategories = [
   { id: "all", label: "All Photos", count: 24 },
@@ -74,7 +75,8 @@ const Gallery = () => {
     : images.filter(img => img.category === activeCategory)
 
   return (
-    <section className="max-w-[1440px] mx-auto px-6 md:px-16 mt-[120px] mb-20">
+    <div>
+      <section className="max-w-[1440px] mx-auto px-6 md:px-16 mt-[120px] mb-20">
       
       {/* HEADING */}
       <motion.div
@@ -414,7 +416,10 @@ const Gallery = () => {
           </div>
         </motion.div>
       )}
+      
     </section>
+    <Footer/>
+    </div>
   )
 }
 
