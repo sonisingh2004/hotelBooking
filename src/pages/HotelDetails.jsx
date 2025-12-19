@@ -1,16 +1,16 @@
 import { useState } from "react"
-import BookingBar from "../components/BookingBar"
-import HeroCarousel from "../components/HeroCarousel"
-import HotelSubNav from "../components/HotelSubNav"
 import Attractions from "../components/Attractions"
 import Banquets from "../components/Banquets"
+import BookingBar from "../components/BookingBar"
 import Dining from "../components/Dining"
-import HotelGallery from "../components/HotelGallery"
+import Footer from "../components/Footer"
+import Gallery from "../components/Gallery"
+import HeroCarousel from "../components/HeroCarousel"
+import HotelSubNav from "../components/HotelSubNav"
 import Location from "../components/Location"
 import Offers from "../components/Offers"
 import Overview from "../components/Overview"
 import Rooms from "../components/Rooms"
-import Footer from "../components/Footer"
 
 const HotelDetails = () => {
   const [activeSection, setActiveSection] = useState("overview")
@@ -47,7 +47,7 @@ const HotelDetails = () => {
 
         {activeSection === "gallery" && (
           <section id="gallery">
-            <HotelGallery />
+            <Gallery />
           </section>
         )}
 

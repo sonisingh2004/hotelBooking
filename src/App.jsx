@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
+import Gallery from "./components/Gallery"
 import Navbar from "./components/Navbar"
 import WhatsAppFloat from "./components/WhatsAppFloat"
 import Destinations from "./pages/Destinations"
@@ -20,6 +21,7 @@ const App = () => {
           element={<HotelDetails />}
         />
         <Route path="/offers" element={<OffersPage />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route
           path="/room/:roomId"
           element={<RoomDetails />}

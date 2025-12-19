@@ -220,6 +220,7 @@ const Navbar = () => {
           <nav className="hidden lg:flex justify-center gap-10 text-sm font-medium">
             <Link to="/destinations">Destinations</Link>
             <Link to="/offers">Offers</Link>
+            <Link to="/gallery">Gallery</Link>
 
             <button
               onClick={(e) => {
